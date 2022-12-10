@@ -30,7 +30,7 @@ pub async fn create_task(
 }
 
 
-pub async fn get_task(pool: &Pool<Sqlite> id: i64) -> DBResult<Task> {
+pub async fn get_task(pool: &Pool<Sqlite>, id: i64) -> DBResult<Task> {
     let mut connection = pool.acquire()
         .await?;
     let task = sqlx::query_as!(

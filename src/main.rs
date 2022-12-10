@@ -2,17 +2,14 @@
 extern crate rocket;
 mod database;
 
-use diesel::sql_types::Json;
-use diesel::sqlite::Sqlite;
 use database::requests::TaskRequest;
 use database::responses::Task;
 use database::{create_task, get_task, get_tasks, DBResult};
 use rocket::serde::json::Json;
 use rocket::State;
-use rocket_sync_db_pools::r2d2::Pool;
 use sqlx::{Pool, Sqlite, SqlitePool};
 
-##[post("/tasks", format = "json", data = "<task>")]
+#[post("/tasks", format = "json", data = "<task>")]
 async fn create(task: Json<TaskRequest>, pool: &State<Pool<Sqlite>>) -> DBResult<Json<Task>> {
     let id = create_task(pool, &task.name, &task.description).await?;
     let task = get_task(pool, id).await?;
