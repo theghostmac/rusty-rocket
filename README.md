@@ -1,7 +1,7 @@
 # Rusty Rocket
 
 Rusty Rocket is a to-do web API that aims to be lightweight and performant.
-[Rusty Rocket](rusty_rocket.png)
+[Rusty Rocket](https://github.com/theghostmac/rusty-rocket/rusty_rocket.png)
 ## Deploy Rusty Rocket
 
 Run:
